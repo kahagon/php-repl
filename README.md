@@ -18,7 +18,7 @@ SETUP REPL
 ----------
 
 When before entering loop, the REPL script include files.  
-If you type fixed code every time, exclude these code to a PHP file, and save php-repl/include directory.  
+If you type fixed code every time, exclude these code to a PHP file, and save it to php-repl/include directory.  
 Files for include are sorted with prefix of filename as integer number.
 You may be numbering files as you need.  
 For example,
