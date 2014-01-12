@@ -5,7 +5,7 @@ $repl_stdin = fopen('php://stdin', 'r');
 $repl_data = '';
 $repl_lines = array();
 $repl_include_dir = dirname(__FILE__) . '/include';
-$repl_include_file_pattern = '/[^\.]*\.php$/';
+$repl_include_file_pattern = '/.*\.php$/';
  
 setup();
 loop(); 
