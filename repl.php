@@ -7,8 +7,23 @@ $repl_lines = array();
 $repl_include_dir = dirname(__FILE__) . '/include';
 $repl_include_file_pattern = '/.*\.php$/';
  
-setup();
-loop(); 
+register_print_code_func();
+
+foreach (get_include_files() as $file) {
+    include $file;
+}
+while(true) {
+    print '> ';
+    $repl_data .= fgets($repl_stdin);
+    if (preg_match('/\\\\$/', $repl_data)==1) {
+        $repl_data = trim($repl_data, "\x00..\x1F \x5C");
+    } else {
+        if(eval($repl_data) !== FALSE) {
+            $repl_lines[] = trim($repl_data);
+        }
+        $repl_data = '';
+    }
+}
 
 
 function l($d) { print strlen($d) . PHP_EOL; }
@@ -36,29 +51,12 @@ function h($data) {
     print PHP_EOL;
 }
 
-function loop() {
-    global $repl_data, $repl_stdin, $repl_lines;
-    while(true) {
-        print '> ';
-        $repl_data .= fgets($repl_stdin);
-        if (preg_match('/\\\\$/', $repl_data)==1) {
-            $repl_data = trim($repl_data, "\x00..\x1F \x5C");
-        } else {
-            if(eval($repl_data) !== FALSE) {
-                $repl_lines[] = trim($repl_data);
-            }
-            $repl_data = '';
-        }
-    }
-}
 
-function setup() {
-    register_print_code_func();
-    include_files();
-}
+function get_include_files() {
+    global 
+        $repl_include_dir, 
+        $repl_include_file_pattern;
 
-function include_files() {
-    global $repl_include_dir, $repl_include_file_pattern;
     $dir = dir($repl_include_dir);
     if (!$dir) {
         return;
@@ -69,7 +67,7 @@ function include_files() {
         if (!preg_match($repl_include_file_pattern, $entry)) {
             continue;
         }
-        $entries[] = $entry;
+        $entries[] = realpath($dir->path . '/' . $entry);
     }
 
     usort($entries, function($a, $b) {
@@ -82,10 +80,7 @@ function include_files() {
         return ($aNum < $bNum) ? -1 : 1;
     });
 
-    foreach ($entries as $entry) {
-        $file = realpath($dir->path . '/' . $entry);
-        eval("include '$file';");
-    }
+    return $entries;
 }
 
 function register_print_code_func() {
