@@ -5,7 +5,7 @@ $repl_stdin = fopen('php://stdin', 'r');
 $repl_data = '';
 $repl_lines = array();
 $repl_include_dir = dirname(__FILE__) . '/include';
-$repl_include_file_pattern = '/[^\.]*\.php/';
+$repl_include_file_pattern = '/[^\.]*\.php$/';
  
 setup();
 loop(); 
@@ -18,6 +18,22 @@ function d() {
     foreach ($args as $arg) {
         var_dump($arg);
     }
+}
+
+function h($data) {
+    $colLimit = 15;
+    $col = 0;
+    $length = strlen($data);
+    for ($i=0; $i < $length; $i++) {
+        printf('%02x ', unpack('C', $data[$i])[1]);
+        if ($col==$colLimit) {
+            $col=0;
+            print PHP_EOL;
+        } else {
+            $col++;
+        }
+    }
+    print PHP_EOL;
 }
 
 function loop() {
