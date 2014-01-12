@@ -35,7 +35,7 @@ FUNCTIONS
 alias of ```var_dump()```
 
 ### l($var)
-alias of ```strlen()```
+print result of ```strlen()```
 
 ### h($var)
 dump variable value as hex string.
