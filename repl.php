@@ -40,7 +40,8 @@ function h($data) {
     $col = 0;
     $length = strlen($data);
     for ($i=0; $i < $length; $i++) {
-        printf('%02x ', unpack('C', $data[$i])[1]);
+        $d = unpack('C', $data[$i]);
+        printf('%02X ', $d[1]);
         if ($col==$colLimit) {
             $col=0;
             print PHP_EOL;
