@@ -42,7 +42,10 @@ print result of ```strlen()```
 dump variable value as hex string.
 
 
+THANKS
+------
 
+Code highlighting function has been implemented by [Xeoncross](https://github.com/Xeoncross).
 
 
 
