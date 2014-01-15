@@ -3,8 +3,9 @@ php-repl
 
 REPL(Read–eval–print loop) script for PHP  
 Forked from https://gist.github.com/oasynnoum/4771380  
-The better way is to use [interactive mode](http://php.net/manual/en/features.commandline.interactive.php) if your PHP has supported it.
-
+The better way is to use interactive mode if your PHP has supported it.
+To get more information about PHP interactive mode see next link.
+http://php.net/manual/en/features.commandline.interactive.php
 
 INSTALL
 -------
@@ -40,6 +41,20 @@ print result of ```strlen()```
 
 ### h($var)
 dump variable value as hex string.
+
+
+TIPS
+----
+
+If line ends with backslash, you can continue to input next line.
+
+    $ php-repl
+    > function foo() {\
+    >     print __FUNCTION__ . PHP_EOL;\
+    > }
+    > foo();
+    foo
+    >
 
 
 THANKS
