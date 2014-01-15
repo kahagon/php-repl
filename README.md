@@ -3,8 +3,8 @@ php-repl
 
 REPL(Read–eval–print loop) script for PHP  
 Forked from https://gist.github.com/oasynnoum/4771380  
-The better way is to use interactive mode if your PHP has supported it.
-To get more information about PHP interactive mode see next link.
+The better way is to use interactive mode if your PHP has supported it.  
+To get more information about PHP interactive mode see next link.  
 http://php.net/manual/en/features.commandline.interactive.php
 
 INSTALL
