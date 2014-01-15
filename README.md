@@ -1,7 +1,7 @@
 php-repl
 ========
 
-REPL script for PHP  
+REPL(Read–eval–print loop) script for PHP  
 Forked from https://gist.github.com/oasynnoum/4771380  
 The better way is to use [interactive mode](http://php.net/manual/en/features.commandline.interactive.php) if your PHP has supported it.
 
