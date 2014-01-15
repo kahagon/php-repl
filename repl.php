@@ -10,6 +10,7 @@ $repl_include_file_pattern = '/.*\.php$/';
 register_print_code_func();
 
 foreach (get_include_files() as $file) {
+    print 'including ' . basename($file) . PHP_EOL;
     include $file;
 }
 while(true) {
