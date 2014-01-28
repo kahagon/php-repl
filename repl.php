@@ -36,6 +36,13 @@ function d() {
     }
 }
 
+function p() {
+    $args = func_get_args();
+    foreach ($args as $arg) {
+        print $arg . PHP_EOL;
+    }
+}
+
 function h($data) {
     $colLimit = 15;
     $col = 0;
